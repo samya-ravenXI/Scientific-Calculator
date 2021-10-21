@@ -166,20 +166,6 @@ public class AddBook extends JFrame implements ActionListener{
 		st.setString(6, t5.getText());
 		st.setString(7, t6.getText());
                 
-                try {
-                conn con1 = new conn();
-                String sql1 = "delete from requestbook where name=? and author=? and publisher=? and edition=?";
-                PreparedStatement st1 = con.c.prepareStatement(sql);
-                st1.setString(1, t2.getText());
-                st1.setString(3, t3.getText());
-		st1.setString(4, t4.getText());
-                st1.setString(5, (String) comboBox.getSelectedItem());
-                int i = st1.executeUpdate();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, e);
-                    e.printStackTrace();
-                }
-                
 		int rs = st.executeUpdate();
 		if (rs > 0)
                     JOptionPane.showMessageDialog(null, "Successfully Added");

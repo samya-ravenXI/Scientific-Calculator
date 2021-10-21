@@ -59,7 +59,7 @@ public class BookDetails extends JFrame implements ActionListener{
 	table.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 	scrollPane.setViewportView(table);
 
-	JButton b1 = new JButton("Search");
+	b1 = new JButton("Search");
 	b1.addActionListener(this);
 	b1.setBorder(new LineBorder(new Color(255, 20, 147), 2, true));
 	ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/eight.png"));
@@ -71,7 +71,7 @@ public class BookDetails extends JFrame implements ActionListener{
 	b1.setBounds(564, 89, 138, 33);
 	contentPane.add(b1);
 
-	JButton b2 = new JButton("Delete");
+	b2 = new JButton("Delete");
 	b2.addActionListener(this);
 	ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/nineth.png"));
         Image i5 = i4.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
@@ -155,6 +155,8 @@ public class BookDetails extends JFrame implements ActionListener{
 		} else if (response == JOptionPane.YES_OPTION) {
                     int rs = st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Deleted !!");
+                    setVisible(false);
+                    new BookDetails().setVisible(true);
                 } else if (response == JOptionPane.CLOSED_OPTION) {
 		
                 }

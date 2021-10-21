@@ -328,38 +328,39 @@ public class IssueBook extends JFrame implements ActionListener{
             }
             if(ae.getSource() == b3){
                     try{
-                String sql = "insert into issueBook(book_id, student_id, bname, sname, course, branch, dateOfIssue) values(?, ?, ?, ?, ?, ?, ?)";
-		PreparedStatement st = con.c.prepareStatement(sql);
-		st.setString(1, t1.getText());
-		st.setString(2, t8.getText());
-		st.setString(3, t2.getText());
-		st.setString(4, t9.getText());
-		st.setString(5, t11.getText());
-		st.setString(6, t12.getText());
-		st.setString(7, ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText());
-                
-                try {
-                conn con1 = new conn();
-                String sql1 = "delete from requestbook where name=? and author=? and publisher=? and edition=?";
-                PreparedStatement st1 = con.c.prepareStatement(sql);
-                st1.setString(1, t2.getText());
-                st1.setString(3, t3.getText());
-		st1.setString(4, t4.getText());
-                st1.setString(5, t5.getText());
-                int i = st1.executeUpdate();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, e);
+                    String sql = "insert into issueBook(book_id, student_id, bname, sname, course, branch, dateOfIssue) values(?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement st = con.c.prepareStatement(sql);
+                    st.setString(1, t1.getText());
+                    st.setString(2, t8.getText());
+                    st.setString(3, t2.getText());
+                    st.setString(4, t9.getText());
+                    st.setString(5, t11.getText());
+                    st.setString(6, t12.getText());
+                    st.setString(7, ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText());
+
+                    try {
+                        String sql1 = "delete from requestbook where student_id=? and name=? and author=? and publisher=? and edition=?";
+                        PreparedStatement st1 = con.c.prepareStatement(sql1);
+                        st1.setString(1, t8.getText());
+                        st1.setString(2, t2.getText());
+                        st1.setString(3, t3.getText());
+                        st1.setString(4, t4.getText());
+                        st1.setString(5, t5.getText());
+                        int x = st1.executeUpdate();
+                    }catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                        e.printStackTrace();
+                    }
+
+                    int i = st.executeUpdate();
+                    if (i > 0)
+                        JOptionPane.showMessageDialog(null, "Successfully Book Issued..!");
+                    else
+                        JOptionPane.showMessageDialog(null, "Error");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Error in Issuing");
                     e.printStackTrace();
                 }
-                
-		int i = st.executeUpdate();
-		if (i > 0)
-                    JOptionPane.showMessageDialog(null, "Successfully Book Issued..!");
-		else
-                    JOptionPane.showMessageDialog(null, "error");
-                    }catch(Exception e){
-                        e.printStackTrace();
-                                }
             }
             if(ae.getSource() == b4){
                 this.setVisible(false);

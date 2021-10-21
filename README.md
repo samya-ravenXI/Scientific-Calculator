@@ -4,14 +4,14 @@ By Assistance Solutions
 The main aim of this project is to provide an easy to handle, automated library management system, which includes features for maintaining librarian records, students' history of issues, fines etc. This library management system helps to make a organnized library which facilitates quick and effortless searching of books, calculation of fines, checking history of book issues/returns etc.
 ## Getting Started
 ### Dependencies
-* JDK 11 [get] (https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html#license-lightbox)
-* NetBeans 12.5 [get] (https://netbeans.apache.org/download/nb125/nb125.html)
-* MySQL 8.x [get] (https://dev.mysql.com/downloads/windows/installer/8.0.html)
- OR MySQL 5.x [get] (https://drive.google.com/file/d/1tui3H5bSm4eVLTyAepvZC-ARRmY6D0sC/view?usp=sharing)
-* WampServer 3.2.3 [get] (https://sourceforge.net/projects/wampserver/)
-* mysql-connector-java-8.0.21.jar [get] (https://drive.google.com/file/d/1k0ztvz6f1lmjwz0gbaJdaNrI0tooNbQv/view) OR
-mysql-connector-java-5.1.49.jar [get] (https://drive.google.com/file/d/1yBPECFLwxk9QP6AfzmYHueHyH7f072DS/view?usp=sharing)
-* Library Management System V1.0 [get] (https://drive.google.com/drive/folders/1kP3Zkf6254bh-R0P9_0AufE0iO2A-svH?usp=sharing)
+* JDK 11, [Download](https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html#license-lightbox)
+* NetBeans 12.5, [Download](https://netbeans.apache.org/download/nb125/nb125.html)
+* MySQL 8.x, [Download](https://dev.mysql.com/downloads/windows/installer/8.0.html)
+ OR MySQL 5.x, [Download](https://drive.google.com/file/d/1tui3H5bSm4eVLTyAepvZC-ARRmY6D0sC/view?usp=sharing)
+* WampServer 3.2.3, [Download](https://sourceforge.net/projects/wampserver/)
+* mysql-connector-java-8.0.21.jar, [Download](https://drive.google.com/file/d/1k0ztvz6f1lmjwz0gbaJdaNrI0tooNbQv/view) OR
+mysql-connector-java-5.1.49.jar, [Download](https://drive.google.com/file/d/1yBPECFLwxk9QP6AfzmYHueHyH7f072DS/view?usp=sharing)
+* Library Management System V1.0, [Download](https://drive.google.com/drive/folders/1kP3Zkf6254bh-R0P9_0AufE0iO2A-svH?usp=sharing)
 ### Installation
 * Download JDK and add bin to the path in environment variables
 * Install NetBeans and open project Library Management System V1.0
@@ -39,9 +39,7 @@ alter table student add primary key (student_id);
 alter table account_srf add foreign key (student_id) references student(student_id) on delete cascade;
 ```
 ## Author
-* Samya Bose [github] (https://github.com/samya-ravenXI) E-mail: j.21.samyabose@gmail.com
-* Junaid Ahmed [github] (https://github.com/kap6174) E-mail: ditipriyaseal@gmail.com
-* Ditipriya Seal [github] (https://github.com/Ditipriya5678) E-mail: junaidahmed50143@gmail.com
-* Namisha Gupta [github] (https://github.com/Namisha19) E-mail: namishagupta.c186@gmail.com
-## Acknowledgement
-* [kunaltyagi9] (https://github.com/kunaltyagi9/Library-Management-System) 
+* Samya Bose [GitHub](https://github.com/samya-ravenXI),  E-mail: j.21.samyabose@gmail.com
+* Junaid Ahmed [GitHub](https://github.com/kap6174), E-mail i.26.junaidahmed@gmail.com
+* Ditipriya Seal [GitHub](https://github.com/Ditipriya5678), E-mail: ditipriyaseal@gmail.com
+* Namisha Gupta [GitHub](https://github.com/Namisha19), E-mail: namishagupta.c186@gmail.com

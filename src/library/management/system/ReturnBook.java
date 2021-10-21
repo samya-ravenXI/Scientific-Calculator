@@ -249,16 +249,17 @@ public class ReturnBook extends JFrame implements ActionListener{
                 else{
                     ReturnBook.fine="500";
                 }
-                String sql1 = "insert into fine(student_id, sname, bname, dateOfIssue, dateOfReturn, fine) values(?, ?, ?, ?, ?, ?)";;
-                PreparedStatement st1 = con.c.prepareStatement(sql1);
-                st1.setString(1, textField_1.getText());
-                st1.setString(2, textField_3.getText());
-                st1.setString(3, textField_2.getText());
-                st1.setString(4, ReturnBook.doi);
-                st1.setString(5, ReturnBook.dor);
-                st1.setString(6, ReturnBook.fine);
-                System.out.println(ReturnBook.fine);
-                int x = st1.executeUpdate();
+                if(Integer.parseInt(ReturnBook.fine)>0) {
+                    String sql1 = "insert into fine(student_id, sname, bname, dateOfIssue, dateOfReturn, fine) values(?, ?, ?, ?, ?, ?)";;
+                    PreparedStatement st1 = con.c.prepareStatement(sql1);
+                    st1.setString(1, textField_1.getText());
+                    st1.setString(2, textField_3.getText());
+                    st1.setString(3, textField_2.getText());
+                    st1.setString(4, ReturnBook.doi);
+                    st1.setString(5, ReturnBook.dor);
+                    st1.setString(6, ReturnBook.fine);
+                    int x = st1.executeUpdate();
+                }
 		if (i > 0 && ReturnBook.diff>0) {
                     JOptionPane.showMessageDialog(null, "Processing..");
                     delete();

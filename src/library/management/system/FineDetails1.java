@@ -66,7 +66,7 @@ public class FineDetails1 extends JFrame implements ActionListener{
 	table.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 	scrollPane.setViewportView(table);
 
-	JButton b1 = new JButton("Search");
+	b1 = new JButton("Search");
 	b1.addActionListener(this);
 	b1.setBorder(new LineBorder(new Color(255, 20, 147), 2, true));
 	ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/eight.png"));

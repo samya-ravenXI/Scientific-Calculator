@@ -50,12 +50,6 @@ public class Home1 extends JFrame implements ActionListener{
 
             JMenu mnHelp = new JMenu("Help");
             mnHelp.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
-            
-
-            JMenuItem mntmReadme = new JMenuItem("Read Me");
-            mntmReadme.setBackground(new Color(211, 211, 211));
-            mntmReadme.setForeground(new Color(105, 105, 105));
-            mnHelp.add(mntmReadme);
 
             JMenuItem mntmAboutUs = new JMenuItem("About Us");
             mntmAboutUs.setForeground(new Color(105, 105, 105));
@@ -177,8 +171,6 @@ public class Home1 extends JFrame implements ActionListener{
 		new LibraryManagementSystem().setVisible(true);
             }else if(msg.equals("Exit")){
                 System.exit(ABORT);
-            
-            }else if(msg.equals("Read Me")){
             
             }else if(msg.equals("About Us")){
                 setVisible(false);

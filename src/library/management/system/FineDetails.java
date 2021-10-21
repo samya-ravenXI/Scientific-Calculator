@@ -65,7 +65,7 @@ public class FineDetails extends JFrame implements ActionListener{
 	table.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 	scrollPane.setViewportView(table);
 
-	JButton b1 = new JButton("Search");
+	b1 = new JButton("Search");
 	b1.addActionListener(this);
 	b1.setBorder(new LineBorder(new Color(255, 20, 147), 2, true));
 	ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/eight.png"));
@@ -77,7 +77,7 @@ public class FineDetails extends JFrame implements ActionListener{
 	b1.setBounds(564, 89, 138, 33);
 	contentPane.add(b1);
 
-	JButton b2 = new JButton("Delete");
+	b2 = new JButton("Delete");
 	b2.addActionListener(this);
 	ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/nineth.png"));
         Image i5 = i4.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
@@ -138,19 +138,21 @@ public class FineDetails extends JFrame implements ActionListener{
             
             conn con = new conn();
             if( ae.getSource() == b1){
-                String sql = "select * from fine where student_id=?";
+                String sql = "select * from fine where sname=?";
 		PreparedStatement st = con.c.prepareStatement(sql);
 		st.setString(1, "%" + search.getText() + "%");
 		ResultSet rs = st.executeQuery();
-
+                System.out.println(search.getText());
 		table.setModel(DbUtils.resultSetToTableModel(rs));
 		rs.close();
 		st.close();
             }
     
             if(ae.getSource() == b2){
-                String sql = "delete from fine where student_id = '" + search.getText() + "'";
-		PreparedStatement st = con.c.prepareStatement(sql);
+                String sql = "delete from fine where sname= ?";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                System.out.println(search.getText());
+                st.setString(1, "%" + search.getText() + "%");
 
 		JDialog.setDefaultLookAndFeelDecorated(true);
 		int response = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
@@ -160,6 +162,8 @@ public class FineDetails extends JFrame implements ActionListener{
 		} else if (response == JOptionPane.YES_OPTION) {
                     int rs = st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Deleted !!");
+                    setVisible(false);
+                    new FineDetails().setVisible(true);
 		} else if (response == JOptionPane.CLOSED_OPTION) {
                 
                 }
