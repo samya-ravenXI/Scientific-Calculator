@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class LibraryManagementSystem extends JFrame implements ActionListener{
 
-        JLabel l1, l11;
+        JLabel l1;
         JButton b1, b2;
         
         public LibraryManagementSystem() {
@@ -29,22 +29,19 @@ public class LibraryManagementSystem extends JFrame implements ActionListener{
                 b2.setFont(new Font("Arial", Font.BOLD, 20));
 		b2.setBorderPainted(false);
                 
-                
                 ImageIcon i1  = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/first.jpg"));
                 Image i3 = i1.getImage().getScaledInstance(1366, 390,Image.SCALE_DEFAULT);
                 ImageIcon i2 = new ImageIcon(i3);
                 l1 = new JLabel(i2);
-                l11 = new JLabel(i2);
                 
                 b1.setBounds(850,300,150,60);
                 b2.setBounds(1050,300,200,60);
 		l1.setBounds(0, -50, 1366, 390);
-                l11.setBounds(0, -50, 1366, 390);
+                
                 
                 l1.add(b1);
-                l11.add(b2);
+                l1.add(b2);
 		add(l1);
-                add(l11);
                 
                 b1.addActionListener(this);
                 b2.addActionListener(this);
