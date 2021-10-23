@@ -10,7 +10,7 @@ import java.sql.*;
 public class ReturnBook extends JFrame implements ActionListener{
     
     public static int diff = 0;
-    public static String fine = null;
+    public static String fine = "0";
     public static String doi = null;
     public static String dor = null;
     private JPanel contentPane;
@@ -234,16 +234,16 @@ public class ReturnBook extends JFrame implements ActionListener{
                 ReturnBook.dor = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
                 ReturnBook.diff = (Integer.parseInt(ReturnBook.dor.substring(0, 4))-Integer.parseInt(ReturnBook.doi.substring(0, 4)))*365 + (Integer.parseInt(ReturnBook.dor.substring(5, 7))-Integer.parseInt(ReturnBook.doi.substring(5, 7)))*30 + (Integer.parseInt(ReturnBook.dor.substring(8, 10))-Integer.parseInt(ReturnBook.doi.substring(8, 10)));
 		int i = st.executeUpdate();
-                if(ReturnBook.diff<30 && ReturnBook.diff>0){
+                if(ReturnBook.diff<30 && ReturnBook.diff>=0){
                         ReturnBook.fine="0";
                 }
-                else if(ReturnBook.diff>30 && ReturnBook.diff<59){
+                else if(ReturnBook.diff>=30 && ReturnBook.diff<59){
                     ReturnBook.fine="100";
                 }
-                else if(ReturnBook.diff>60 && ReturnBook.diff<89){
+                else if(ReturnBook.diff>=60 && ReturnBook.diff<89){
                     ReturnBook.fine="200";
                 }
-                else if(ReturnBook.diff>90 && ReturnBook.diff<120){
+                else if(ReturnBook.diff>=90 && ReturnBook.diff<119){
                     ReturnBook.fine="300";
                 }
                 else{
