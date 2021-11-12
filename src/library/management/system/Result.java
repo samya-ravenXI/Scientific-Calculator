@@ -53,7 +53,7 @@ public class Result extends JFrame{
 	scrollPane.setViewportView(table);
 
 	JPanel panel = new JPanel();
-	panel.setBorder(new TitledBorder(new LineBorder(new Color(47, 79, 79), 2, true), "Issue-Book-Details",
+	panel.setBorder(new TitledBorder(new LineBorder(new Color(47, 79, 79), 2, true), "Search-Details",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 128, 128)));
 	panel.setForeground(new Color(0, 128, 128));
 	panel.setBounds(26, 36, 737, 240);
@@ -77,13 +77,6 @@ public class Result extends JFrame{
         l1.setIcon(i3);
 	l1.setBounds(685, 13, 96, 27);
 	contentPane.add(l1);
-        
-        JLabel l2 = new JLabel("Note: Books are to be returned within a month of borrowing. Fine will be incurred otherwise.");
-        l2.setForeground(new Color(255, 0, 0));
-	l2.setBounds(400, 380, 800, 24);
-        l2.setFont(new Font("Tahoma", Font.BOLD, 8));
-        contentPane.add(l2);
-        
 	searchResult();
     }
 }

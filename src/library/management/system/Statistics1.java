@@ -24,16 +24,28 @@ public class Statistics1 extends JFrame{
             PreparedStatement st = con.c.prepareStatement(sql);
             st.setString(1,Login_user1.s);
             ResultSet rs = st.executeQuery();
-
             table.setModel(DbUtils.resultSetToTableModel(rs));
 
 	} catch (Exception e) {
 			// TODO: handle exception
 	}
     }
+    
+    public void returnBook() {
+        try {
+            conn con = new conn();
+            String sql = "select * from returnBook where student_id=?";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            st.setString(1,Login_user1.s);
+            ResultSet rs = st.executeQuery();
+            table_1.setModel(DbUtils.resultSetToTableModel(rs));
+	} catch (Exception e) {
+			// TODO: handle exception
+	}
+    }
 
     public Statistics1() {
-        setBounds(400, 200, 810, 470);
+        setBounds(400, 200, 810, 650);
 	contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,13 +87,31 @@ public class Statistics1 extends JFrame{
         l1.setIcon(i3);
 	l1.setBounds(685, 13, 96, 27);
 	contentPane.add(l1);
+
+	JScrollPane scrollPane_1 = new JScrollPane();
+	scrollPane_1.setBounds(40, 316, 717, 217);
+	contentPane.add(scrollPane_1);
+
+	table_1 = new JTable();
+	table_1.setBackground(new Color(204, 255, 255));
+	table_1.setForeground(new Color(153, 51, 0));
+	table_1.setFont(new Font("Sitka Small", Font.BOLD, 12));
+	scrollPane_1.setViewportView(table_1);
+
+	JPanel panel_1 = new JPanel();
+	panel_1.setBorder(new TitledBorder(new LineBorder(new Color(47, 79, 79), 2, true), "Return-Book-Details",
+		TitledBorder.RIGHT, TitledBorder.TOP, null, new Color(0, 128, 128)));
+	panel_1.setBounds(25, 630, 741, 240);
+        panel_1.setBackground(Color.WHITE);
+	contentPane.add(panel_1);
         
         JLabel l2 = new JLabel("Note: Books are to be returned within a month of borrowing. Fine will be incurred otherwise.");
         l2.setForeground(new Color(255, 0, 0));
-	l2.setBounds(400, 380, 800, 24);
+	l2.setBounds(400, 550, 800, 24);
         l2.setFont(new Font("Tahoma", Font.BOLD, 8));
         contentPane.add(l2);
         
 	issueBook();
+        returnBook();
     }
 }

@@ -59,6 +59,12 @@ public class Home1 extends JFrame implements ActionListener{
 
             JMenu mnRecord = new JMenu("Record");
             mnRecord.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
+            
+            JMenuItem bookdetails = new JMenuItem("Book Details");
+            bookdetails.addActionListener(this);
+            bookdetails.setBackground(new Color(211, 211, 211));
+            bookdetails.setForeground(Color.DARK_GRAY);
+            mnRecord.add(bookdetails);
 
             JMenuItem requestdetails = new JMenuItem("Request Details");
             requestdetails.setBackground(new Color(211, 211, 211));
@@ -176,6 +182,9 @@ public class Home1 extends JFrame implements ActionListener{
                 setVisible(false);
 		new aboutUs1().setVisible(true);
             
+            }else if(msg.equals("Book Details")){
+                setVisible(false);
+		new BookDetails1().setVisible(true);
             }else if(msg.equals("Request Details")){
                 setVisible(false);
                 new RequestDetails1().setVisible(true);	

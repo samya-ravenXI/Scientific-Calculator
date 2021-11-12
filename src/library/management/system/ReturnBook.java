@@ -9,6 +9,7 @@ import java.sql.*;
 
 public class ReturnBook extends JFrame implements ActionListener{
     
+    public boolean flag = false;
     public static int diff = 0;
     public static String fine = "0";
     public static String doi = null;
@@ -36,9 +37,12 @@ public class ReturnBook extends JFrame implements ActionListener{
             st.setString(1, textField.getText());
             int i = st.executeUpdate();
             if (i > 0)
+            {
                 JOptionPane.showConfirmDialog(null, "Book Returned");
+                flag = true;
+            }
             else
-                JOptionPane.showMessageDialog(null, "Error in Deleting");
+                JOptionPane.showMessageDialog(null, "Book is Not Issued");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
@@ -218,55 +222,61 @@ public class ReturnBook extends JFrame implements ActionListener{
 		
             }
             if(ae.getSource() == b2){
-                
-                String sql = "insert into returnBook(book_id, student_id, bname, sname,course, branch, dateOfIssue, dateOfReturn) values(?, ?, ?, ?, ?, ?, ?, ?)";
-		PreparedStatement st = con.c.prepareStatement(sql);
-		st.setString(1, textField.getText());
-		st.setString(2, textField_1.getText());
-		st.setString(3, textField_2.getText());
-		st.setString(4, textField_3.getText());
-		st.setString(5, textField_4.getText());
-		st.setString(6, textField_5.getText());
-		st.setString(7, textField_6.getText());
-
-		st.setString(8, ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText());
                 ReturnBook.doi = textField_6.getText();
                 ReturnBook.dor = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
                 ReturnBook.diff = (Integer.parseInt(ReturnBook.dor.substring(0, 4))-Integer.parseInt(ReturnBook.doi.substring(0, 4)))*365 + (Integer.parseInt(ReturnBook.dor.substring(5, 7))-Integer.parseInt(ReturnBook.doi.substring(5, 7)))*30 + (Integer.parseInt(ReturnBook.dor.substring(8, 10))-Integer.parseInt(ReturnBook.doi.substring(8, 10)));
-		int i = st.executeUpdate();
-                if(ReturnBook.diff<30 && ReturnBook.diff>=0){
-                        ReturnBook.fine="0";
-                }
-                else if(ReturnBook.diff>=30 && ReturnBook.diff<59){
-                    ReturnBook.fine="100";
-                }
-                else if(ReturnBook.diff>=60 && ReturnBook.diff<89){
-                    ReturnBook.fine="200";
-                }
-                else if(ReturnBook.diff>=90 && ReturnBook.diff<119){
-                    ReturnBook.fine="300";
-                }
-                else{
-                    ReturnBook.fine="500";
-                }
-                if(Integer.parseInt(ReturnBook.fine)>0) {
-                    String sql1 = "insert into fine(student_id, sname, bname, dateOfIssue, dateOfReturn, fine) values(?, ?, ?, ?, ?, ?)";;
-                    PreparedStatement st1 = con.c.prepareStatement(sql1);
-                    st1.setString(1, textField_1.getText());
-                    st1.setString(2, textField_3.getText());
-                    st1.setString(3, textField_2.getText());
-                    st1.setString(4, ReturnBook.doi);
-                    st1.setString(5, ReturnBook.dor);
-                    st1.setString(6, ReturnBook.fine);
-                    int x = st1.executeUpdate();
-                }
-		if (i > 0 && ReturnBook.diff>0) {
-                    JOptionPane.showMessageDialog(null, "Processing..");
-                    delete();
-		} else
-                    JOptionPane.showMessageDialog(null, "error");
-                
-		
+                if (ReturnBook.diff>=0) {
+                        JOptionPane.showMessageDialog(null, "Processing...");                            
+                        delete();
+                        if(flag == true)
+                        {
+                            try
+                            {
+                                String sql = "insert into returnBook(book_id, student_id, bname, sname,course, branch, dateOfIssue, dateOfReturn) values(?, ?, ?, ?, ?, ?, ?, ?)";
+                                PreparedStatement st = con.c.prepareStatement(sql);
+                                st.setString(1, textField.getText());
+                                st.setString(2, textField_1.getText());
+                                st.setString(3, textField_2.getText());
+                                st.setString(4, textField_3.getText());
+                                st.setString(5, textField_4.getText());
+                                st.setString(6, textField_5.getText());
+                                st.setString(7, textField_6.getText());
+                                st.setString(8, ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText());
+                                int i = st.executeUpdate();
+                                if(ReturnBook.diff<30 && ReturnBook.diff>=0){
+                                        ReturnBook.fine="0";
+                                }
+                                else if(ReturnBook.diff>=30 && ReturnBook.diff<59){
+                                    ReturnBook.fine="100";
+                                }
+                                else if(ReturnBook.diff>=60 && ReturnBook.diff<89){
+                                    ReturnBook.fine="200";
+                                }
+                                else if(ReturnBook.diff>=90 && ReturnBook.diff<119){
+                                    ReturnBook.fine="300";
+                                }
+                                else{
+                                    ReturnBook.fine="500";
+                                }
+                                if(Integer.parseInt(ReturnBook.fine)>0) {
+                                    String sql1 = "insert into fine(student_id, sname, bname, dateOfIssue, dateOfReturn, fine) values(?, ?, ?, ?, ?, ?)";;
+                                    PreparedStatement st1 = con.c.prepareStatement(sql1);
+                                    st1.setString(1, textField_1.getText());
+                                    st1.setString(2, textField_3.getText());
+                                    st1.setString(3, textField_2.getText());
+                                    st1.setString(4, ReturnBook.doi);
+                                    st1.setString(5, ReturnBook.dor);
+                                    st1.setString(6, ReturnBook.fine);
+                                    int x = st1.executeUpdate();
+                                }
+                            } catch (SQLException e) {
+                                JOptionPane.showMessageDialog(null, "Book could't be returned.");
+                                e.printStackTrace();
+                            }
+                            flag = false;
+                        }
+                    }else
+                        JOptionPane.showMessageDialog(null, "Book couldn't be returned.");
             }
             if(ae.getSource() == b3){
                 this.setVisible(false);
