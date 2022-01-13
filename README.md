@@ -19,4 +19,4 @@ The main aim of this project is to design a Scientific Calculator using Java Swi
 ### Execution
 * Alternatively the project can be accessed using the .exe or .jar file included.
 ### Sample
-<img src="https://github.com/samya-ravenXI/Scientific-Calculator/blob/4b215b7c1cc9ce65b0b822c665f42133f7f9c81f/01.jpg"/>
+<img src="https://github.com/samya-ravenXI/Scientific-Calculator/blob/4b215b7c1cc9ce65b0b822c665f42133f7f9c81f/01.jpg" width = "200"/>
