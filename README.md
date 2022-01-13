@@ -2,6 +2,30 @@
 By Assistance Solutions
 ## Description
 The main aim of this project is to provide an easy to handle, automated library management system, which includes features for maintaining librarian records, students' history of issues, fines etc. This library management system helps to make a organnized library which facilitates quick and effortless searching of books, calculation of fines, checking history of book issues/returns etc.
+## Project Features
+### Librarian Functions
+* Add a book
+* Issue a book
+* Return a book
+* Add a student
+* Review Statistics
+* Review Book Details
+* Review Fine Details
+* Review Student Details
+* Review Book Request Details
+### Student/Faculty Functions
+* Request Books
+* Search Books
+* Review Their Statistics
+* Review Their Details
+* View the Book List
+### Extra Features Added
+* No duplicate logins
+* Student/Faculty can only login with a unique username given to them, once added into the system by the librarian
+* One book is issued per student in a day
+* Only issued books are returned
+* Calender UI fixed
+* Minor Bugs Fixed
 ## Getting Started
 ### Dependencies
 * JDK 11, [Download](https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html#license-lightbox)
